@@ -1,0 +1,27 @@
+# Emacs 包目录（可通过 package-install 重新安装）
+elpa/
+
+# 运行时生成文件
+auto-save-list/
+eshell/
+transient/
+
+# 本地状态文件
+recentf
+projectile-bookmarks.eld
+projects
+.lsp-session-v1
+
+# 编译后的 Elisp 文件
+*.elc
+
+# 备份文件
+*~
+\#*\#
+.\#*
+
+# 客户端文件
+custom.el
+
+# 单独下载的主题文件
+themes/
