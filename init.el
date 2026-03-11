@@ -6,7 +6,6 @@
 (require 'init-elpa)
 (require 'init-ui)
 (require 'init-theme)
-(require 'init-auto-theme)
 (require 'init-dashboard)
 (require 'init-dirvish)
 (require 'init-package)
