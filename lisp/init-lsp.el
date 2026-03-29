@@ -4,8 +4,14 @@
 
 ;;; ── 安装依赖 ─────────────────────────────────────────────────────────────────
 (unless (package-installed-p 'lsp-mode) (package-install 'lsp-mode))
-(unless (package-installed-p 'lsp-ui)   (package-install 'lsp-ui))
+(unless (package-installed-p 'which-key) (package-install 'which-key))
 (unless (package-installed-p 'conda)    (package-install 'conda))
+
+;;; ── which-key 全局启用 ──────────────────────────────────────────────────────
+(use-package which-key
+  :demand t
+  :config
+  (which-key-mode 1))
 
 ;;; ── lsp-mode 公共配置 ────────────────────────────────────────────────────────
 (use-package lsp-mode
@@ -36,17 +42,6 @@
   (lsp-mode    . lsp-enable-which-key-integration)
   (before-save . lsp-format-buffer))
 
-;;; ── lsp-ui 界面增强（公共）──────────────────────────────────────────────────
-(use-package lsp-ui
-  :after lsp-mode
-  :custom
-  (lsp-ui-doc-enable t)
-  (lsp-ui-doc-position 'at-point)
-  (lsp-ui-doc-show-with-cursor t)
-  (lsp-ui-sideline-enable t)
-  (lsp-ui-sideline-show-diagnostics t)
-  (lsp-ui-sideline-show-code-actions t))
-
 ;;; ── Python：conda 环境管理 ───────────────────────────────────────────────────
 ;; 切换 conda 环境后，pylsp 路径自动跟随，lsp 自动重启
 (use-package conda
@@ -65,3 +60,4 @@
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
+

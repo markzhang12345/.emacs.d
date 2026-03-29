@@ -4,9 +4,11 @@
 
 (use-package restart-emacs)
 
-(use-package benchmark-init
-             :init (benchmark-init/activate)
-             :hook (after-init . benchmark-init/deactivate))
+;; benchmark-init：仅在需要调试启动性能时启用（设置环境变量 EMACS_BENCHMARK=1）
+(when (getenv "EMACS_BENCHMARK")
+  (use-package benchmark-init
+    :init (benchmark-init/activate)
+    :hook (after-init . benchmark-init/deactivate)))
 
 (use-package ivy
   :defer 1
@@ -17,8 +19,7 @@
   (setq ivy-use-virtual-buffers t
 	ivy-initial-inputs-alist nil
 	ivy-count-format "%d/%d "
-	enable-recursive-minibuffers t)
-  (ivy-posframe-mode 1))
+	enable-recursive-minibuffers t))
 
 (use-package counsel
   :after (ivy)
@@ -33,16 +34,6 @@
 	 ("C-r" . swiper-isearch-backward))
   :config (setq swiper-action-recenter t
 		swiper-include-line-number-in-search t))
-
-(use-package ivy-posframe
-  :after ivy
-  :init
-  (setq ivy-posframe-display-function-alist
-	      '((swiper . ivy-posframe-display-at-frame-center)
-		(complete-symbol . ivy-posframe-display-at-point)
-		(counsel-find-file . ivy-posframe-display-at-frame-center)
-		(ivy-switch-buffer . ivy-posframe-display-at-frame-center)
-		(t . ivy-posframe-display-at-frame-center))))
 
 (use-package company
   :hook (after-init . global-company-mode)
@@ -60,6 +51,4 @@
 
 (provide 'init-package)
 ;;; init-package.el ends here
-
-
 
