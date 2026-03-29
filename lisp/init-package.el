@@ -56,7 +56,7 @@
   (global-set-key (kbd "M-p") #'flymake-goto-prev-error))
 
 (use-package ace-window
-             :bind (("M-o" . 'ace-window)))
+  :bind (("M-o" . 'ace-window)))
 
 (provide 'init-package)
 ;;; init-package.el ends here

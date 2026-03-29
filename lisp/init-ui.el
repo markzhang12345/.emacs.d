@@ -40,8 +40,6 @@
   (setq midnight-period (* 3 24 60 60))
   (midnight-mode 1))
 
-(set-frame-parameter nil 'alpha '(95 . 95))
-
 (setq-default cursor-type 'bar)
 
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
